@@ -44,8 +44,9 @@ nav {
   height: 26px;
 }
 
-.memegen-container {
-  position:relative;
+.meme-image-container {
+  display:flex;
+  justify-content: center;
 }
 
 .da-image {
