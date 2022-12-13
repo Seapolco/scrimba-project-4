@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import MemeForm from './components/Meme-Form';
-import DaMeme from './components/Da-Meme';
+// import DaMeme from './components/Da-Meme';
 import './App.css'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Navbar/>
         <main className="memegen-container">
           <MemeForm/>
-          <DaMeme/>
+
         </main>
       </>
 

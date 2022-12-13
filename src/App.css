@@ -45,21 +45,33 @@ nav {
 }
 
 .meme-image-container {
+
+  position: relative;
+
   display:flex;
   justify-content: center;
+
+
 }
 
 .da-image {
-  background-image: url('./assets/memeimg.png');
-  height: 268px;
+  /* height: 268px;
   width: 477px;
   margin: 0 40px;
   display:flex;
   justify-content: center;
   padding: 20px 0px;
+  background-size: cover;
+  background-repeat: no-repeat; */
+
+  max-height: 320px;
+  max-width: 500px
 }
 
+/* background-image: url('./assets/memeimg.png'); */
+
 .meme-outputs {
+  position:absolute;
   display:grid;
   height: 100%;
   grid-template-rows: 20% 60% 20%;
