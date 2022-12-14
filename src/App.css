@@ -64,8 +64,8 @@ nav {
   background-size: cover;
   background-repeat: no-repeat; */
 
-  max-height: 320px;
-  max-width: 500px
+  max-height: 60vh;
+  max-width: 85%;
 }
 
 /* background-image: url('./assets/memeimg.png'); */
