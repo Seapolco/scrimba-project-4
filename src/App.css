@@ -6,6 +6,7 @@
 }
 
 
+
 nav {
   display:flex;
   justify-content: space-between;
@@ -64,8 +65,8 @@ nav {
   background-size: cover;
   background-repeat: no-repeat; */
 
-  max-height: 60vh;
-  max-width: 85%;
+  max-height: 65vh;
+  max-width: 90%;
 }
 
 /* background-image: url('./assets/memeimg.png'); */
@@ -147,7 +148,12 @@ input {
   border: none;
 }
 
-
+.memegen-container {
+  display: grid;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
 
 

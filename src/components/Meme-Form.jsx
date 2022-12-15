@@ -44,7 +44,7 @@ const MemeForm = () => {
     }
 
     function updateTopText(e) {
-        console.log(e.target.value)
+        console.log(e.target.id)
         setMeme((prevMeme) => (
             {
                 ...prevMeme,
@@ -54,7 +54,7 @@ const MemeForm = () => {
     }
 
     function updateBottomText(e) {
-        console.log(e.target.value)
+        console.log(e.target.id)
         setMeme((prevMeme) => (
             {
                 ...prevMeme,
@@ -70,8 +70,8 @@ const MemeForm = () => {
         <>
         <form className='form-container'>
             <div className="inputs">
-                <input type="text"  className="input-1" onChange={updateTopText} placeholder={meme.topText}/>
-                <input type="text" className="input-2" onChange={updateBottomText} placeholder={meme.bottomText}/>
+                <input id="1" type="text"  className="input-1" onChange={updateTopText} placeholder={meme.topText}/>
+                <input id="2" type="text" className="input-2" onChange={updateBottomText} placeholder={meme.bottomText}/>
                 <button onClick={getMemeImage} className="new-meme-btn">Get a new meme image  🖼</button>
             </div>
         </form>

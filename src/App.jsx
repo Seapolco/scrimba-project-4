@@ -10,7 +10,7 @@ function App() {
       <>
         <Navbar/>
         <main className="memegen-container">
-          <MemeForm/>
+        <MemeForm/>
 
         </main>
       </>
