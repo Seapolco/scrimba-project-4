@@ -16,6 +16,10 @@ nav {
   background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
 }
 
+form {
+  min-width: 80%;
+}
+
 .n-logo-title {
   display: flex;
   align-items: center;
@@ -65,8 +69,8 @@ nav {
   background-size: cover;
   background-repeat: no-repeat; */
 
-  max-height: 65vh;
-  max-width: 90%;
+  height: 65vh;
+  width: 80vw;
 }
 
 /* background-image: url('./assets/memeimg.png'); */
