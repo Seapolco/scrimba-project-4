@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 
-import memeData from '../meme-data'
+// import memeData from '../meme-data'
 
-const memesArray = memeData.data.memes
+// const memesArray = memeData.data.memes
 
 
 const MemeForm = () => {
@@ -16,44 +16,43 @@ const MemeForm = () => {
     const [meme, setMeme] = useState(
         {   topText:"Shut up", 
             bottomText:'and take my money',
-            randomImage : null
+            randomImage : 'https://i.imgflip.com/9ehk.jpg'
         }
     )
 
-    const [allMemeImages, setMemeImage] = useState(memesArray )
+    const [allMemeImages, setMemeImages] = useState([])
 
 
     function getMemeImage(e) {
 
         e && e.preventDefault();
-        // let randomNum =  Math.floor(Math.random() * allMemeImages.length);
+        let randomNum =  Math.floor(Math.random() * allMemeImages.length);
 
-        // let newImage = allMemeImages[randomNum].url
-        // setMeme(prevMeme => {
-        //     return {
-        //         ...prevMeme,
-        //         randomImage: newImage
-        //     }
-        // })
-        fetch("https://api.imgflip.com/get_memes")
-            .then((response) => response.json())
-            .then((data) => {
-                const memesArray = data.data.memes;
-                let randomNum =  Math.floor(Math.random() * allMemeImages.length);
-                let newImage = memesArray[randomNum].url
-                setMeme(prevMeme =>({
-                    ...prevMeme,
-                    randomImage: newImage
-                }))
-                
-            
-            })
+        let newImage = allMemeImages[randomNum].url
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                randomImage: newImage
+            }
+        })
 
     }
 
     useEffect(() => {
-            getMemeImage();
+        fetch("https://api.imgflip.com/get_memes")
+        .then((response) => response.json())
+        .then((data) => {
+            const memesArray = data.data.memes;
+            // let randomNum =  Math.floor(Math.random() * allMemeImages.length);
+            // let newImage = memesArray[randomNum].url
+           
+            setMemeImages(memesArray)
+            
+        
+        })
+        
     },[])
+
 
 
     function updateText(e) {
@@ -67,6 +66,7 @@ const MemeForm = () => {
         })
     }
 
+   
 
     return (
         <>
