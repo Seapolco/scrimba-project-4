@@ -69,8 +69,8 @@ form {
   background-size: cover;
   background-repeat: no-repeat; */
 
-  height: 65vh;
-  width: 80vw;
+  width: clamp(250px, 70%, 600px);
+  max-height: 70vh;
 }
 
 /* background-image: url('./assets/memeimg.png'); */
@@ -113,12 +113,15 @@ form {
 
 .form-container {
   display:flex;
+  justify-self: center;
   padding: 40px 38px;
+  min-width: 300px;
+  max-width: 700px;
 }
 
 .inputs {
   display:grid;
-  width: 100%;
+  width: clamp(70%, 400px, 500px);
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 

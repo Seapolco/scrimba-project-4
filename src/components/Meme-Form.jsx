@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 import memeData from '../meme-data'
@@ -16,52 +16,45 @@ const MemeForm = () => {
     const [meme, setMeme] = useState(
         {   topText:"Shut up", 
             bottomText:'and take my money',
-            randomImage : "http://i.imgflip.com/1bij.jpg"
+            randomImage : null
         }
     )
 
     const [allMemeImages, setMemeImage] = useState(memesArray )
 
-    // function randomMemeUrl(e) {
-    //     e.preventDefault();
-    //     let randomNum =  Math.floor(Math.random() * memesArray.length);
-
-    //      setMemeImage(memesArray[randomNum].url);
-    // }
 
     function getMemeImage(e) {
-        e.preventDefault();
-        let randomNum =  Math.floor(Math.random() * allMemeImages.length);
 
-        let newImage = allMemeImages[randomNum].url
-        setMeme(prevMeme => {
-            return {
-                ...prevMeme,
-                randomImage: newImage
-            }
-        })
+        e && e.preventDefault();
+        // let randomNum =  Math.floor(Math.random() * allMemeImages.length);
+
+        // let newImage = allMemeImages[randomNum].url
+        // setMeme(prevMeme => {
+        //     return {
+        //         ...prevMeme,
+        //         randomImage: newImage
+        //     }
+        // })
+        fetch("https://api.imgflip.com/get_memes")
+            .then((response) => response.json())
+            .then((data) => {
+                const memesArray = data.data.memes;
+                let randomNum =  Math.floor(Math.random() * allMemeImages.length);
+                let newImage = memesArray[randomNum].url
+                setMeme(prevMeme =>({
+                    ...prevMeme,
+                    randomImage: newImage
+                }))
+                
+            
+            })
 
     }
 
-    // function updateTopText(e) {
-    //     console.log(e.target.id)
-    //     setMeme((prevMeme) => (
-    //         {
-    //             ...prevMeme,
-    //             topText: e.target.value
-    //         }
-    //     ))
-    // }
+    useEffect(() => {
+            getMemeImage();
+    },[])
 
-    // function updateBottomText(e) {
-    //     console.log(e.target.id)
-    //     setMeme((prevMeme) => (
-    //         {
-    //             ...prevMeme,
-    //             bottomText: e.target.value
-    //         }
-    //     ))
-    // }
 
     function updateText(e) {
         const {name, value} = e.target;
@@ -79,8 +72,8 @@ const MemeForm = () => {
         <>
         <form className='form-container'>
             <div className="inputs">
-                <input name='topText' id="1" type="text"  className="input-1" onChange={updateText} placeholder={meme.topText}/>
-                <input name='bottomText' id="2" type="text" className="input-2" onChange={updateText} placeholder={meme.bottomText}/>
+                <input name='topText' value={meme.topText} id="1" type="text"  className="input-1" onChange={updateText} placeholder={meme.topText}/>
+                <input name='bottomText' value={meme.bottomText } id="2" type="text" className="input-2" onChange={updateText} placeholder={meme.bottomText}/>
                 <button onClick={getMemeImage} className="new-meme-btn">Get a new meme image  🖼</button>
             </div>
         </form>
